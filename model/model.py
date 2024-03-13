@@ -26,13 +26,6 @@ class C_update(nn.Module):
         return C
 
 
-def keep_top_k_values_per_column(input_matrix, k=50):
-    values, indices = torch.topk(torch.abs(input_matrix), k, dim=0)  # 沿列维度计算
-    threshold = torch.abs(values[k - 1, :])  # 取出每列第k个值作为阈值
-    binary_mask = (torch.abs(input_matrix) >= threshold).float()
-    return input_matrix * binary_mask, binary_mask
-
-
 class Z_update(nn.Module):
     def __init__(self):
         super(Z_update, self).__init__()

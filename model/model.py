@@ -51,14 +51,6 @@ class u_update(nn.Module):
         u = u + rho * (C - Z)
         return u
 
-class admm_norm(nn.Module):
-    def __init__(self):
-        super(admm_norm, self).__init__()
-
-    def forward(self, x):
-        x = x + 1e-8  # 防止除零
-        norm = torch.norm(x, p=1, dim=-1, keepdim=True)  # L1 范数
-        return x / norm
 
 
 class Admm(nn.Module):
@@ -68,7 +60,6 @@ class Admm(nn.Module):
         self.C_update = C_update()
         self.Z_update = Z_update()
         self.u_update = u_update()
-        self.Norm = admm_norm()
         self.number_layer = args.number_layer
         self.lamda = args.lamda
         self.rho = nn.Parameter(torch.tensor([args.rho], device='cuda'))

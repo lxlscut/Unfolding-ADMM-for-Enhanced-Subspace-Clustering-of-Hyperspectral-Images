@@ -42,8 +42,8 @@ if __name__ == '__main__':
     parser.add_argument('--lr', default=0.0000005, type=float, help='Learning rate')
     parser.add_argument('--rho', default=0.1, type=float, help='Initial rho')
     parser.add_argument('--bata', default=40, type=float, help='weight loss_recon')
-    parser.add_argument('--theta', default=0.6, type=float, help='weight loss_c2')
-    parser.add_argument('--gama', default=0.001, type=float, help='weight loss_g')
+    parser.add_argument('--theta', default=0.1, type=float, help='weight loss_c2')
+    parser.add_argument('--gama', default=0.0001, type=float, help='weight loss_g')
 
 
 
